@@ -1,0 +1,28 @@
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#map {
+    height: calc(100vh - 40px) !important; /* Adjust as needed */
+}
+
+/* Style for the user count display */
+#user-count {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: white;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    z-index: 1000; /* Ensure it is on top of other content */
+    font-size: 1.2em; /* Increase font size for better visibility */
+    color: #333; /* Adjust color for better readability */
+}
+
+.leaflet-container {
+    height: calc(100vh - 40px) !important; /* Adjust as needed */
+}

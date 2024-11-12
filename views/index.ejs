@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Real-Time Location Tracking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+        /* Flex container to align map and chat window */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .container {
+            display: flex;
+            height: calc(100vh - 40px); /* Adjust to leave space for user count */
+        }
+        #map {
+            flex: 1;
+            height: 100%;
+        }
+        #chat {
+            width: 300px;
+            border-left: 1px solid #ddd;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+        }
+        #messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+        #message-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+            background: #fff;
+        }
+        #message-input input {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #message-input button {
+            border: none;
+            padding: 10px;
+            background: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        #user-count {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="map"></div>
+        <div id="chat">
+			<h1 style="margin: auto; text-decoration: underline;">Chat</h1>
+            <div id="messages"></div>
+            <div id="message-input">
+                <input type="text" id="message" placeholder="Type a message..." autofocus/>
+                <button id="send-message">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- User count display at the bottom -->
+    <div id="user-count">Connected Users: 0</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet-src.min.js" integrity="sha512-3/WyQrhTdqSVmSifQS62akgtNBhZha2lS44TnoN9Jk3J01FvsKK4suVmz6t5FtccGb5iJw58GoFhBjPE5EPc8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
